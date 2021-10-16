@@ -4,7 +4,7 @@ import { CadhubParams } from 'src/components/Customizer/customizerConverter'
 
 export const lambdaBaseURL =
   process.env.CAD_LAMBDA_BASE_URL ||
-  'https://2inlbple1b.execute-api.us-east-1.amazonaws.com/prod2'
+  'https://oxt2p7ddgj.execute-api.us-east-1.amazonaws.com/prod'
 
 export const stlToGeometry = (url) =>
   new Promise((resolve, reject) => {
@@ -18,6 +18,7 @@ export interface RenderArgs {
     camera: State['camera']
     viewerSize: State['viewerSize']
     quality: State['objectData']['quality']
+    viewAll: boolean
   }
 }
 

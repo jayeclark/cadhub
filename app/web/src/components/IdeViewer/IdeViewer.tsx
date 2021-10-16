@@ -117,9 +117,9 @@ function Controls({ onCameraChange, onDragStart, onInit, controlsRef }) {
   useEffect(() => {
     onInit(threeInstance)
     // init camera position
-    camera.position.x = 200
-    camera.position.y = 140
-    camera.position.z = 20
+    camera.position.x = 10
+    camera.position.y = 10
+    camera.position.z = 5
     camera.far = 10000
     camera.fov = 22.5 // matches default openscad fov
     camera.updateProjectionMatrix()
@@ -346,7 +346,6 @@ const IdeViewer = ({
   }
   const onCameraChange = (camera) => {
     if (handleOwnCamera) {
-      console.log('yo')
       return
     }
     thunkDispatch({
@@ -361,6 +360,7 @@ const IdeViewer = ({
           state,
           dispatch,
           camera,
+          viewAll: state?.objectData?.type === 'INIT',
         })
       }
     })

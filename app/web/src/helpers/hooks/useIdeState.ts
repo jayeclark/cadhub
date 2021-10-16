@@ -308,6 +308,7 @@ export const useIdeState = (): [State, (actionOrThunk: any) => any] => {
 interface RequestRenderArgsStateless {
   state: State
   camera?: State['camera']
+  viewAll?: boolean
   viewerSize?: State['viewerSize']
   quality?: State['objectData']['quality']
   specialCadProcess?: string
@@ -317,6 +318,7 @@ interface RequestRenderArgsStateless {
 export const requestRenderStateless = ({
   state,
   camera,
+  viewAll,
   viewerSize,
   quality = 'low',
   specialCadProcess = null,
@@ -339,6 +341,7 @@ export const requestRenderStateless = ({
       parameters: state.isCustomizerOpen
         ? parameters || state.currentParameters
         : {},
+      viewAll,
       camera: camera || state.camera,
       viewerSize: viewerSize || state.viewerSize,
       quality,

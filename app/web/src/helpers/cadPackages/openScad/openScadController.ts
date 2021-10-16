@@ -19,6 +19,7 @@ export const render = async ({ code, settings }: RenderArgs) => {
   const body = JSON.stringify({
     settings: {
       size,
+      viewAll: settings.viewAll,
       parameters: settings.parameters,
       camera: {
         // rounding to give our caching a chance to sometimes work
@@ -59,7 +60,9 @@ export const render = async ({ code, settings }: RenderArgs) => {
     }
     const blob = await response.blob()
     const text = await new Response(blob).text()
-    const { consoleMessage, customizerParams, type } = splitGziped(text)
+    const { consoleMessage, customizerParams, type, cameraInfo } =
+      splitGziped(text)
+    console.log(cameraInfo)
     return createHealthyResponse({
       type: type !== 'stl' ? 'png' : 'geometry',
       data:
